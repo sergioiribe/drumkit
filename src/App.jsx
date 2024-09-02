@@ -23,7 +23,8 @@ function App() {
   const [score, setScore] = useState(0)
   const [timer, setTimer] = useState(null)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState('')
+  const [topScores, setTopScores] = useState([])
   
 
 
