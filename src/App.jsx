@@ -138,71 +138,65 @@ function App() {
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-end keys bg-custom-image overflow-hidden">
-      <div className="h-[50%] md:h-[70%] w-[100%] flex justify-center">
+      <div className="h-[50%] md:h-[70%] w-full flex justify-center items-center">
         {isPlaying && !gameOver && (
           <div className="text-xl font-bold text-white absolute left-0 top-0 w-full">
             Score: {score}
           </div>
         )}
-        
-       <div className="flex justify-center cursor w-full m-auto">
-  {!isPlaying && !gameOver ? (
-    <div className='gap-4 flex flex-col'>
-       <p className='font-bold text-2xl text-white text-center'>Presiona para jugar</p>
-      <button className='m-auto flex justify-center' onClick={() => setIsModalVisible(true)}>
-    <FaCirclePlay size="125px" color="white" />
-  </button>
- 
-    </div>
-  ) : gameOver ? (
-    <div className="fixed flex justify-center items-center z-50w-[90%]  md:w-[50%] border-2 border-white rounded md:flex flex-col md:flex-row z-20  bg-white  md:opacity-90 m-auto p-2">
-      <div>
-     <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
-          <ul>
-            {topScores.map((score, index) => (
-              <li key={index} className="text-yellow-600 font-bold text-lg text-center">
-                {index + 1}. {score.name}: {score.score}
-              </li>
-            ))}
-          </ul>
-     </div>
-     <div className='flex flex-col p-5 gap-3'>
-     <div className='flex flex-col gap-3'>
-      <p className="text-xl font-bold text-black text-center">
-        Fallaste {playerName}, tu score es:
-      </p>
-      <p className="text-3xl font-bold text-black opacity-100 text-center">{score}</p>
+        <div className="flex justify-center w-full">
+          {!isPlaying && !gameOver ? (
+            <div className="gap-4 flex flex-col items-center">
+              <p className="font-bold text-2xl text-white text-center">Presiona para jugar</p>
+              <button onClick={() => setIsModalVisible(true)} className="flex justify-center">
+                <FaCirclePlay size="125px" color="white" />
+              </button>
+            </div>
+          ) : gameOver ? (
+            <div className="fixed flex justify-center items-center z-50 w-[90%] md:w-[50%] border-2 border-white rounded bg-white opacity-90 p-2">
+              <div>
+                <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
+                <ul>
+                  {topScores.map((score, index) => (
+                    <li key={index} className="text-yellow-600 font-bold text-lg text-center">
+                      {index + 1}. {score.name}: {score.score}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-col p-5 gap-3">
+                <div className="flex flex-col gap-3">
+                  <p className="text-xl font-bold text-black text-center">
+                    Fallaste {playerName}, tu score es:
+                  </p>
+                  <p className="text-3xl font-bold text-black text-center">{score}</p>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => startGame(playerName)}
+                    className="mt-4 bg-green-600 hover:bg-green-700 text-white p-3 rounded-lg transition-all duration-200"
+                  >
+                    Jugar de nuevo
+                  </button>
+                  <button
+                    onClick={handleNewUser}
+                    className="mt-4 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-lg transition-all duration-200"
+                  >
+                    Nuevo usuario
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="w-full h-full flex justify-center items-center flex-col">
+              <div className="w-[100px] h-[100px] border-2 border-white rounded flex justify-center items-center bg-white opacity-90">
+                <kbd className="text-4xl font-bold text-black">{currentLetter}</kbd>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-     <div className='flex gap-3'>
-     <button 
-        onClick={() => startGame(playerName)} 
-        className="mt-4 bg-green-600 opacity-100 p-3 hover:bg-green-700 text-white rounded-lg transition-all duration-200"
-      >
-        Jugar de nuevo
-      </button>
-      <button 
-        onClick={handleNewUser}
-        className="mt-4 bg-blue-600 opacity-100 hover:bg-blue-700 text-white p-3 rounded-lg transition-all duration-200"
-      >
-        Nuevo usuario
-      </button>
-      
-     </div>
-     
-     </div>
-    </div>
-  ) : (
-    <div className="w-[100%] h-[50%] md:h-[100%] flex justify-center items-center flex-col">
-      <div className="w-[100px] h-[100px] border-2 border-white rounded justify-center items-center flex flex-col z-2 bg-white opacity-90">
-      <kbd className="text-4xl font-bold text-black">
-        {currentLetter}
-      </kbd>
-    </div>
-    </div>
-  )}
-</div>
-      </div>
-      <div className="h-[50%] md:h-[30%] w-[100%] flex gap-3 justify-center items-center  flex-wrap md:flex-row">
+      <div className="h-[50%] md:h-[30%] w-full flex gap-3 justify-center items-center flex-wrap">
         <DrumPad letter={'A'} sound={'clap'} keyCode={65} handlePadClick={handlePadClick} />
         <DrumPad letter={'S'} sound={'hihat'} keyCode={83} handlePadClick={handlePadClick} />
         <DrumPad letter={'D'} sound={'kick'} keyCode={68} handlePadClick={handlePadClick}/>
