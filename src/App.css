@@ -1,0 +1,11 @@
+.bg-custom-image {
+    background-image: url(./assets/img.jpeg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .key.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
