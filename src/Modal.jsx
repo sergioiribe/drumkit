@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 
 
-export const Modal = ({ isVisible, onClose, onSubmit }) => {
+export const Modal = ({ isVisible, onClose, onSubmit, playerName }) => {
     const [name, setName] = useState('')
 
     const handleSubmit = (e) => {    
@@ -14,6 +14,11 @@ export const Modal = ({ isVisible, onClose, onSubmit }) => {
             onClose()
         }
     }
+
+    useEffect(() => {
+        setName(playerName)
+
+    },[playerName]);
 
     if (!isVisible) return null;
 

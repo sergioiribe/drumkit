@@ -60,6 +60,7 @@ function App() {
   }, [isPlaying, currentLetter, gameOver, score])
 
   const saveScore = async (name, score) => {
+    console.log("saving score", score);
     try {
       await addDoc(collection(db, "drumkit"), {
         name: name,
@@ -94,7 +95,7 @@ function App() {
 
      const newTimer = setTimeout(() => {
        endGame()
-     }, 1500)
+     }, 2000)
  
      setTimer(newTimer)
 
@@ -114,6 +115,11 @@ function App() {
     setIsPlaying(false);
     if (timer) clearTimeout(timer);
   }
+
+  const handleNewUser = () => {
+    setPlayerName(''); // Limpia el nombre
+    setIsModalVisible(true); // Muestra el modal
+  };
   
 
   return (
@@ -160,7 +166,7 @@ function App() {
         Jugar de nuevo
       </button>
       <button 
-        onClick={() => setIsModalVisible(true)}
+        onClick={handleNewUser}
         className="mt-4 bg-blue-600 opacity-100 hover:bg-blue-700 text-white p-3 rounded-lg transition-all duration-200"
       >
         Nuevo usuario
@@ -205,6 +211,7 @@ function App() {
         isVisible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
         onSubmit={startGame}  
+        playerName={playerName}
       />
     </div>
   )
