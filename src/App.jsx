@@ -155,7 +155,7 @@ function App() {
  
     </div>
   ) : gameOver ? (
-    <div className="fixed flex justify-start items-center z-50 w-[90%]  md:w-[50%] border-2 border-white rounded md:flex flex-col md:flex-row  bg-white  md:opacity-90 mb-20 m-auto p-2">
+    <div className="fixed top-5 left-1/2 transform -translate-x-1/2 flex flex-col justify-center items-center z-50 w-[90%] md:w-[50%] border-2 border-white rounded bg-white md:opacity-90 p-2">
       <div>
      <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
           <ul>
