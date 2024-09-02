@@ -12,7 +12,7 @@ import tomSound from './assets/sounds/tom.wav'
 import tinkSound from './assets/sounds/tink.wav'
 import { FaCirclePlay } from 'react-icons/fa6'
 import { Modal } from './Modal'
-import { db } from './firebase';
+import { db } from './firebase-config';
 import { collection, addDoc } from "firebase/firestore"; // Importamos las funciones necesarias de Firestore
 
 
