@@ -138,7 +138,7 @@ function App() {
 
   return (
     <div className="w-[100wh] h-[100svh] flex flex-col keys bg-custom-image overflow-hidden">
-      <div className="h-[30%] md:h-[70%] w-[100%] flex justify-center items-center">
+      <div className="h-[50%] md:h-[70%] w-[100%] flex justify-center items-center">
         {isPlaying && !gameOver && (
           <div className="text-2xl font-bold text-white absolute p-3 left-0 top-0 w-full">
             Score: {score}
@@ -155,7 +155,7 @@ function App() {
  
     </div>
   ) : gameOver ? (
-    <div className="fixed flex justify-center items-center z-50w-[90%]  md:w-[50%] border-2 border-white rounded md:flex flex-col md:flex-row z-20  bg-white  md:opacity-90 m-auto p-2">
+    <div className="fixed flex justify-start items-center z-50 w-[90%]  md:w-[50%] border-2 border-white rounded md:flex flex-col md:flex-row  bg-white  md:opacity-90 mb-20 m-auto p-2">
       <div>
      <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
           <ul>
@@ -202,7 +202,7 @@ function App() {
   )}
 </div>
       </div>
-      <div className="h-[60%] md:h-[30%] w-[100%] flex gap-3 justify-center items-center  flex-wrap md:flex-row overflow-hidden">
+      <div className="h-[50%] md:h-[30%] w-[100%] flex gap-3 justify-center items-center  flex-wrap md:flex-row overflow-hidden">
         <DrumPad letter={'A'} sound={'clap'} keyCode={65} handlePadClick={handlePadClick} />
         <DrumPad letter={'S'} sound={'hihat'} keyCode={83} handlePadClick={handlePadClick} />
         <DrumPad letter={'D'} sound={'kick'} keyCode={68} handlePadClick={handlePadClick}/>
