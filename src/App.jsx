@@ -13,7 +13,7 @@ import tinkSound from './assets/sounds/tink.wav'
 import { FaCirclePlay } from 'react-icons/fa6'
 import { Modal } from './Modal'
 import { db } from './firebase-config';
-import { collection, addDoc } from "firebase/firestore"; // Importamos las funciones necesarias de Firestore
+import { collection, addDoc, query, orderBy, limit, getDocs } from "firebase/firestore"
 
 
 function App() {
@@ -152,7 +152,10 @@ function App() {
       >
         Nuevo usuario
       </button>
-      <h2 className="text-xl font-bold text-white mb-4">Top 5 Puntajes</h2>
+      
+     </div>
+     <div>
+     <h2 className="text-xl font-bold text-white mb-4">Top 5 Puntajes</h2>
           <ul>
             {topScores.map((score, index) => (
               <li key={index} className="text-white text-lg">
