@@ -32,7 +32,6 @@ export const Modal = ({ isVisible, onClose, onSubmit }) => {
                 <p className='text-xs text-wrap p-1 w-[200px] text-center'>Recuerda si te equivocas o fallas perderas, ¡Buena suerte!</p>
                
             </form>
-            
         </div>
     </div>
   )

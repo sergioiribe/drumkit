@@ -66,10 +66,24 @@ function App() {
         timestamp: new Date() // Agrega un timestamp para saber cuándo se guardó el puntaje
       });
       console.log("Score saved successfully");
+      fetchTopScores(); 
     } catch (e) {
       console.error("Error saving score: ", e);
     }
   }
+
+  const fetchTopScores = async () => {
+    const q = query(collection(db, 'drumkit'), orderBy('score', 'desc'), limit(5));
+    const querySnapshot = await getDocs(q);
+    const scores = querySnapshot.docs.map(doc => doc.data());
+    setTopScores(scores);
+  };
+
+  useEffect(() => {
+    fetchTopScores(); // Obtiene los mejores puntajes al cargar el componente
+  }, []);
+
+
   const generateRandomLetter = () => {
     const letters = 'ASDFGHJKL'
     const randomIndex = Math.floor(Math.random() * letters.length)
@@ -137,6 +151,14 @@ function App() {
       >
         Nuevo usuario
       </button>
+      <h2 className="text-xl font-bold text-white mb-4">Top 5 Puntajes</h2>
+          <ul>
+            {topScores.map((score, index) => (
+              <li key={index} className="text-white text-lg">
+                {index + 1}. {score.name}: {score.score}
+              </li>
+            ))}
+          </ul>
      </div>
     </div>
   ) : (
@@ -173,7 +195,7 @@ function App() {
       <Modal
         isVisible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
-        onSubmit={startGame} 
+        onSubmit={startGame}  
       />
     </div>
   )
