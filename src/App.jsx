@@ -94,7 +94,7 @@ function App() {
 
      const newTimer = setTimeout(() => {
        endGame()
-     }, 2000)
+     }, 1500)
  
      setTimer(newTimer)
 
@@ -134,15 +134,28 @@ function App() {
  
     </div>
   ) : gameOver ? (
-    <div className="w-[30%] h-[200px] border-2 border-white rounded justify-center items-center flex flex-col z-10 bg-white opacity-90 m-auto">
-      <p className="text-xl font-bold text-black">
+    <div className="w-[50%] border-2 border-white rounded justify-center items-center flex z-10 bg-white opacity-90 m-auto p-2">
+      <div>
+     <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
+          <ul>
+            {topScores.map((score, index) => (
+              <li key={index} className="text-yellow-600 font-bold text-lg text-center">
+                {index + 1}. {score.name}: {score.score}
+              </li>
+            ))}
+          </ul>
+     </div>
+     <div className='flex flex-col p-5 gap-3'>
+     <div className='flex flex-col gap-3'>
+      <p className="text-xl font-bold text-black text-center">
         Fallaste {playerName}, tu score es:
       </p>
-      <p className="text-3xl font-bold text-black opacity-100">{score}</p>
+      <p className="text-3xl font-bold text-black opacity-100 text-center">{score}</p>
+      </div>
      <div className='flex gap-3'>
      <button 
         onClick={() => startGame(playerName)} 
-        className="mt-4 bg-green-600 opacity-100 hover:bg-green-700 text-white p-3 rounded-lg transition-all duration-200"
+        className="mt-4 bg-green-600 opacity-100 p-3 hover:bg-green-700 text-white rounded-lg transition-all duration-200"
       >
         Jugar de nuevo
       </button>
@@ -154,15 +167,7 @@ function App() {
       </button>
       
      </div>
-     <div>
-     <h2 className="text-xl font-bold text-white mb-4">Top 5 Puntajes</h2>
-          <ul>
-            {topScores.map((score, index) => (
-              <li key={index} className="text-white text-lg">
-                {index + 1}. {score.name}: {score.score}
-              </li>
-            ))}
-          </ul>
+     
      </div>
     </div>
   ) : (
