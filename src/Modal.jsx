@@ -23,7 +23,7 @@ export const Modal = ({ isVisible, onClose, onSubmit, playerName }) => {
     if (!isVisible) return null;
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
+    <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-hidden'>
         <div className=' bg-white rounded-lg shadow-lg flex flex-col'>
         <div className='relative top-1 left-1 flex gap-3'>
             <button onClick={onClose}>
