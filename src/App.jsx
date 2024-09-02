@@ -202,7 +202,7 @@ function App() {
   )}
 </div>
       </div>
-      <div className="h-[40%] md:h-[30%] w-[100%] flex gap-3 justify-center items-center  flex-wrap md:flex-row overflow-hidden">
+      <div className="h-[60%] md:h-[30%] w-[100%] flex gap-3 justify-center items-center  flex-wrap md:flex-row overflow-hidden">
         <DrumPad letter={'A'} sound={'clap'} keyCode={65} handlePadClick={handlePadClick} />
         <DrumPad letter={'S'} sound={'hihat'} keyCode={83} handlePadClick={handlePadClick} />
         <DrumPad letter={'D'} sound={'kick'} keyCode={68} handlePadClick={handlePadClick}/>
