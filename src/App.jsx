@@ -137,7 +137,7 @@ function App() {
   
 
   return (
-    <div className="w-screen h-screen flex flex-col keys bg-custom-image overflow-hidden">
+    <div className="min-w-screen min-h-screen flex flex-col keys bg-custom-image overflow-hidden">
       <div className="h-[30%] md:h-[70%] w-[100%] flex justify-center items-center">
         {isPlaying && !gameOver && (
           <div className="text-2xl font-bold text-white absolute p-3 left-0 top-0 w-full">
