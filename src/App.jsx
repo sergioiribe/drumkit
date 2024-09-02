@@ -138,12 +138,13 @@ function App() {
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-end keys bg-custom-image overflow-hidden">
-      <div className="md:h-[50%] w-[100%] flex justify-center">
+      <div className="h-[50%]md:h-[50%] w-[100%] flex justify-center">
         {isPlaying && !gameOver && (
           <div className="text-xl font-bold text-white absolute left-0 top-0 w-full">
             Score: {score}
           </div>
         )}
+        
        <div className="flex justify-center cursor w-full m-auto">
   {!isPlaying && !gameOver ? (
     <div className='gap-4 flex flex-col'>
