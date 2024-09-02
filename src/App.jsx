@@ -109,7 +109,7 @@ function App() {
 
      const newTimer = setTimeout(() => {
        endGame()
-     }, 15000)
+     }, 1300)
  
      setTimer(newTimer)
 
