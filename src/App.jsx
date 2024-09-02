@@ -86,6 +86,20 @@ function App() {
   }, []);
 
 
+  const handlePadClick = (letter) => {
+    if (!isPlaying || gameOver) return;
+    handleInput(letter);
+  }
+
+  const handleInput = (inputLetter) => {
+    if (inputLetter === currentLetter) {
+      setScore(score + 1);
+      generateRandomLetter();
+    } else {
+      endGame();
+    }
+  }
+
   const generateRandomLetter = () => {
     const letters = 'ASDFGHJKL'
     const randomIndex = Math.floor(Math.random() * letters.length)
@@ -95,7 +109,7 @@ function App() {
 
      const newTimer = setTimeout(() => {
        endGame()
-     }, 2000)
+     }, 15000)
  
      setTimer(newTimer)
 
@@ -123,8 +137,8 @@ function App() {
   
 
   return (
-    <div className="w-[100vw] h-[100vh] flex flex-col justify-center items-center keys bg-custom-image">
-      <div className=" h-[75%] w-[100%] flex justify-center">
+    <div className="w-[100vw] h-[100vh] flex flex-col justify-center items-end keys bg-custom-image">
+      <div className="md:h-[70%] w-[100%] flex justify-center">
         {isPlaying && !gameOver && (
           <div className="text-xl font-bold text-white absolute left-0 top-0 w-full">
             Score: {score}
@@ -140,7 +154,7 @@ function App() {
  
     </div>
   ) : gameOver ? (
-    <div className="w-[50%] border-2 border-white rounded justify-center items-center flex z-10 bg-white opacity-90 m-auto p-2">
+    <div className="fixed flex justify-center items-center z-50w-[90%]  md:w-[50%] border-2 border-white rounded md:flex flex-col md:flex-row z-20  bg-white  md:opacity-90 m-auto p-2">
       <div>
      <h2 className="text-xl font-bold text-yellow-600 p-5 text-center">Top 5 Puntajes</h2>
           <ul>
@@ -177,24 +191,26 @@ function App() {
      </div>
     </div>
   ) : (
-    <div className="w-[100px] h-[100px] border-2 border-white rounded justify-center items-center flex flex-col z-10 bg-white opacity-90 m-auto">
+    <div className="w-[100%] h-[50%] md:h-[100%] flex justify-end items-center flex-col">
+      <div className="w-[100px] h-[100px] border-2 border-white rounded justify-center items-center flex flex-col z-2 bg-white opacity-90">
       <kbd className="text-4xl font-bold text-black">
         {currentLetter}
       </kbd>
     </div>
+    </div>
   )}
 </div>
       </div>
-      <div className=" h-[35%] w-[100%] flex gap-3 justify-center items-center">
-        <DrumPad letter={'A'} sound={'clap'} keyCode={65} />
-        <DrumPad letter={'S'} sound={'hihat'} keyCode={83} />
-        <DrumPad letter={'D'} sound={'kick'} keyCode={68} />
-        <DrumPad letter={'F'} sound={'openhat'} keyCode={70} />
-        <DrumPad letter={'G'} sound={'boom'} keyCode={71} />
-        <DrumPad letter={'H'} sound={'ride'} keyCode={72} />
-        <DrumPad letter={'J'} sound={'snare'} keyCode={74} />
-        <DrumPad letter={'K'} sound={'tom'} keyCode={75} />
-        <DrumPad letter={'L'} sound={'tink'} keyCode={76} />
+      <div className="h-[50%] md:h-[50%] w-[100%] flex gap-3 justify-center items-center mt-20 flex-wrap md:flex-row">
+        <DrumPad letter={'A'} sound={'clap'} keyCode={65} handlePadClick={handlePadClick} />
+        <DrumPad letter={'S'} sound={'hihat'} keyCode={83} handlePadClick={handlePadClick} />
+        <DrumPad letter={'D'} sound={'kick'} keyCode={68} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'F'} sound={'openhat'} keyCode={70} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'G'} sound={'boom'} keyCode={71} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'H'} sound={'ride'} keyCode={72} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'J'} sound={'snare'} keyCode={74} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'K'} sound={'tom'} keyCode={75} handlePadClick={handlePadClick}/>
+        <DrumPad letter={'L'} sound={'tink'} keyCode={76} handlePadClick={handlePadClick}/>
 
         <audio data-key="65" src={clapSound}></audio>
         <audio data-key="83" src={hihatSound}></audio>
